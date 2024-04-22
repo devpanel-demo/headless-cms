@@ -8,13 +8,12 @@
 # - sudo apt-get install nano
 #
 # ----------------------------------------------------------------------
+if [[ ! $(which npm) ]]; then
+    cd ~
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    source $HOME/.nvm/nvm.sh
+    nvm install 16
+    nvm use 16
+    source ~/.bashrc 
+fi
 
-# sudo apt-get update
-# sudo apt-get install -y nano
-su www
-cd ~
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-source $HOME/.nvm/nvm.sh
-nvm install 16
-nvm use 16
-source ~/.bashrc 
