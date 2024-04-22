@@ -27,6 +27,7 @@ export const environment = {
 EOF
 npm install
 npm run build-prod-ngsw
+cp -i $APP_ROOT/.devpanel/.htaccess dist/.
 
 ################################### BACKEND SERVICE ################################################
 cd $APP_ROOT/backend
