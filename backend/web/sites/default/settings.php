@@ -290,7 +290,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'c5a3620de947fdeebc5319688c9e9993ed63a83dbc9f8e053194eccb4038f971';
+$settings['hash_salt'] = 'Z-WJ1E7w1vPwMdPwi-KmAwC-ACCL2mTqnm2-WnmxUgJv4sxvWxQTM8P3qUgow32j5FzyNduCXw';
 
 /**
  * Deployment identifier.
@@ -765,7 +765,7 @@ $databases['default']['default'] = [
   'username' => getenv('DB_USER'),
   'password' => getenv('DB_PASSWORD'),
   'host' => getenv('DB_HOST'),
-  'port' => '3306',
+  'port' => getenv('DB_PORT'),
   'driver' => 'mysql',
   'prefix' => '',
   'collation' => 'utf8mb4_general_ci',
@@ -790,3 +790,14 @@ $databases['default']['default'] = [
 // }
 
 $settings['config_sync_directory'] = 'profiles/contrib/contenta_jsonapi/config/sync';
+$databases['default']['default'] = array (
+  'database' => 'slqkrkuoou',
+  'username' => 'ottlajqiac',
+  'password' => 'nmeipqkqum',
+  'prefix' => '',
+  'host' => 'dp-hdavefus-do-user-15074262-0.c.db.ondigitalocean.com',
+  'port' => '25060',
+  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+  'driver' => 'mysql',
+  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
+);

@@ -17,38 +17,5 @@
 
 ################################### FRONTEND SERVICE ################################################
 
-cd $APP_ROOT/frontend
-cat << EOF > "$APP_ROOT/frontend/src/environments/environment.ts"
-export const environment = {
-  production: true,
-  jsonapi: 'https://$DP_HOSTNAME/api',
-  baseUrl: 'https://$DP_HOSTNAME',
-};
-EOF
-npm install
-npm run build-prod-ngsw
-cp -i $APP_ROOT/.devpanel/.htaccess dist/.
 
-################################### BACKEND SERVICE ################################################
-cd $APP_ROOT/backend
-
-STATIC_FILES_PATH="$APP_ROOT/backend/web/sites/default/files"
-SETTINGS_FILES_PATH="$APP_ROOT/backend/web/sites/default/settings.php"
-#== Setup settings.php file
-sudo cp $APP_ROOT/.devpanel/drupal-settings.php $SETTINGS_FILES_PATH
-[[ ! -d $STATIC_FILES_PATH ]] && sudo mkdir --mode 775 $STATIC_FILES_PATH || sudo chmod 775 -R $STATIC_FILES_PATH
-sudo chown -R www:www-data $STATIC_FILES_PATH
-#== Generate hash salt
-echo 'Generate hash salt ...'
-DRUPAL_HASH_SALT=$(openssl rand -hex 32);
-sudo sed -i -e "s/^\$settings\['hash_salt'\].*/\$settings\['hash_salt'\] = '$DRUPAL_HASH_SALT';/g" $SETTINGS_FILES_PATH
-
-#== Install dependency by using composer
-composer install
-## Fix bug missing module
-git checkout  web/profiles/contrib/contenta_jsonapi/config/sync/core.extension.yml
-#== Init project
-composer run-script install:with-mysql
-
-
-
+bash $APP_ROOT/.devpanel/init.sh
