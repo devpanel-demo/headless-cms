@@ -14,7 +14,7 @@ jobs:
         env:
           DP_APP_ID: 'headless-cms'
           APP_ROOT: '/var/www/html'
-          WEB_ROOT: '/var/www/html/web'
+          WEB_ROOT: '/var/www/html'
           CODES_USER_DATA_DIR: '/var/www/html/.vscode'
           CODES_WORKING_DIR: '/var/www/html'
           APACHE_RUN_USER: 'www'
