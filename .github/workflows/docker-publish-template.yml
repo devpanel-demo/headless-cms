@@ -89,18 +89,18 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push
-      uses: docker/build-push-action@v3
-      with:
-        file: Dockerfile
-        context: .
-        push: true
-        tags: ${{ env.IMAGE_TAG }}
+    # - name: Build and push
+    #   uses: docker/build-push-action@v3
+    #   with:
+    #     file: Dockerfile
+    #     context: .
+    #     push: true
+    #     tags: ${{ env.IMAGE_TAG }}
 
-    # - name: Commit and push the container state to Docker Hub
-    #   run: |
-    #     docker commit ${{ job.services.webserver.id }} ${{ env.IMAGE_TAG }}
-    #     docker push ${{ env.IMAGE_TAG }}
+    - name: Commit and push the container state to Docker Hub
+      run: |
+        docker commit ${{ job.services.webserver.id }} ${{ env.IMAGE_TAG }}
+        docker push ${{ env.IMAGE_TAG }}
 
     # - name: Push to tag latest
     #   if: endsWith(github.ref, '/main')
