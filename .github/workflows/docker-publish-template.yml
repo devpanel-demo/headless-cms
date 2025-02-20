@@ -80,6 +80,10 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Build Docker image
+        run: |
+          docker-compose build
+
     - name: Set env to testing environment
       run: |
         echo "IMAGE_TAG=boinguyen/headless-cms:develop" >> $GITHUB_ENV
