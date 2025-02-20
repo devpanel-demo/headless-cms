@@ -9,11 +9,14 @@
 #
 # ----------------------------------------------------------------------
 if [[ ! $(which npm) ]]; then
-    cd ~
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-    source $HOME/.nvm/nvm.sh
-    nvm install 16
-    nvm use 16
-    source ~/.bashrc 
-fi
+    # cd ~
+    # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    # source $HOME/.nvm/nvm.sh
+    # nvm install 16
+    # nvm use 16
+    # source ~/.bashrc
 
+    cd ~
+    curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
+    sudo apt -y install nodejs 
+fi
