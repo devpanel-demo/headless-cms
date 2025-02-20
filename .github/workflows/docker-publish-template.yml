@@ -80,9 +80,9 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build Docker image
-        run: |
-          docker-compose build
+    - name: Build Docker image
+      run: |
+        docker-compose build
 
     - name: Set env to testing environment
       run: |
