@@ -97,13 +97,13 @@ jobs:
         push: true
         tags: ${{ env.IMAGE_TAG }}
 
-    - name: Commit and push the container state to Docker Hub
-      run: |
-        docker commit ${{ job.services.webserver.id }} ${{ env.IMAGE_TAG }}
-        docker push ${{ env.IMAGE_TAG }}
+    # - name: Commit and push the container state to Docker Hub
+    #   run: |
+    #     docker commit ${{ job.services.webserver.id }} ${{ env.IMAGE_TAG }}
+    #     docker push ${{ env.IMAGE_TAG }}
 
-    - name: Push to tag latest
-      if: endsWith(github.ref, '/main')
-      run: |
-        docker commit ${{ job.services.webserver.id }} boinguyen/headless-cms:latest
-        docker push boinguyen/headless-cms:latest
+    # - name: Push to tag latest
+    #   if: endsWith(github.ref, '/main')
+    #   run: |
+    #     docker commit ${{ job.services.webserver.id }} boinguyen/headless-cms:latest
+    #     docker push boinguyen/headless-cms:latest
