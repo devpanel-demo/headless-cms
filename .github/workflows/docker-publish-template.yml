@@ -82,7 +82,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build
+        docker build -t headless-cms:develop
 
     - name: Set env to testing environment
       run: |
