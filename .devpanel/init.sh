@@ -24,7 +24,7 @@ cat << EOF > "$APP_ROOT/frontend/src/environments/environment.prod.ts"
 export const environment = {
   production: true,
   jsonapi: '/api',
-  baseUrl: '/',
+  baseUrl: '',
 };
 EOF
 npm install
