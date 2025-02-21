@@ -790,14 +790,4 @@ $databases['default']['default'] = [
 // }
 
 $settings['config_sync_directory'] = 'profiles/contrib/contenta_jsonapi/config/sync';
-$databases['default']['default'] = array (
-  'database' => 'slqkrkuoou',
-  'username' => 'ottlajqiac',
-  'password' => 'nmeipqkqum',
-  'prefix' => '',
-  'host' => 'dp-hdavefus-do-user-15074262-0.c.db.ondigitalocean.com',
-  'port' => '25060',
-  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
-  'driver' => 'mysql',
-  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
-);
+
