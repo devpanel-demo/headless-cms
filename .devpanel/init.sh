@@ -23,8 +23,8 @@ mkdir -p dist
 cat << EOF > "$APP_ROOT/frontend/src/environments/environment.prod.ts"
 export const environment = {
   production: true,
-  jsonapi: 'https://$DP_HOSTNAME/api',
-  baseUrl: 'https://$DP_HOSTNAME',
+  jsonapi: '/api',
+  baseUrl: '/',
 };
 EOF
 npm install
