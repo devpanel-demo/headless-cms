@@ -47,5 +47,6 @@ git checkout  web/profiles/contrib/contenta_jsonapi/config/sync/core.extension.y
 #== Init project
 composer run-script install:with-mysql
 
+sudo cp $APP_ROOT/.devpanel/drupal-settings.php $SETTINGS_FILES_PATH
 
 
