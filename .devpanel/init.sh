@@ -37,9 +37,11 @@ cd $APP_ROOT/backend
 STATIC_FILES_PATH="$APP_ROOT/backend/web/sites/default/files"
 SETTINGS_FILES_PATH="$APP_ROOT/backend/web/sites/default/settings.php"
 #== Setup settings.php file
-sudo cp $APP_ROOT/.devpanel/drupal-settings.php $SETTINGS_FILES_PATH
+cp $APP_ROOT/.devpanel/drupal-settings.php $SETTINGS_FILES_PATH
 [[ ! -d $STATIC_FILES_PATH ]] && sudo mkdir --mode 775 $STATIC_FILES_PATH || sudo chmod 775 -R $STATIC_FILES_PATH
 sudo chown -R www:www-data $STATIC_FILES_PATH
+sudo chown -R www:www $SETTINGS_FILES_PATH
+
 #== Install dependency by using composer
 composer install
 ## Fix bug missing module
@@ -49,4 +51,6 @@ composer run-script install:with-mysql
 
 sudo cp $APP_ROOT/.devpanel/drupal-settings.php $SETTINGS_FILES_PATH
 
-
+echo 'Generate hash salt ...'
+DRUPAL_HASH_SALT=$(openssl rand -hex 32);
+sudo sed -i -e "s/^\$settings\['hash_salt'\].*/\$settings\['hash_salt'\] = '$DRUPAL_HASH_SALT';/g" $SETTINGS_FILES_PATH
