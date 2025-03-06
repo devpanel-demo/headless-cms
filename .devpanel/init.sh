@@ -49,4 +49,6 @@ composer run-script install:with-mysql
 
 sudo cp $APP_ROOT/.devpanel/drupal-settings.php $SETTINGS_FILES_PATH
 
-
+echo 'Generate hash salt ...'
+DRUPAL_HASH_SALT=$(openssl rand -hex 32);
+sudo sed -i -e "s/^\$settings\['hash_salt'\].*/\$settings\['hash_salt'\] = '$DRUPAL_HASH_SALT';/g" $SETTINGS_FILES_PATH
