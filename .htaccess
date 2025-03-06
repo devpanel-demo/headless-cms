@@ -1,9 +1,14 @@
 RewriteEngine On
 
-# Route requests to the backend for specific directories
-RewriteCond %{REQUEST_URI} ^/?(admin|user|node|api)
-RewriteRule ^(.*)$ /backend/web/$1 [L]
+RewriteCond %{REQUEST_URI} !^/admin
+RewriteCond %{REQUEST_URI} !^/user
+RewriteCond %{REQUEST_URI} !^/api
+RewriteCond %{REQUEST_URI} !^/node
+RewriteRule ^(.*)$ /frontend/dist/$1 [NC,L]
 
-# Route all other requests to the frontend
-RewriteCond %{REQUEST_URI} !^/?(admin|user|node|api)
-RewriteRule ^(.*)$ /frontend/dist/?$1 [L]
+RewriteCond %{REQUEST_URI} ^/admin [OR]
+RewriteCond %{REQUEST_URI} ^/user [OR]
+RewriteCond %{REQUEST_URI} ^/node [OR]
+RewriteCond %{REQUEST_URI} ^/api
+RewriteRule ^(.*)$ /backend/web/$1 [NC,L]
+
