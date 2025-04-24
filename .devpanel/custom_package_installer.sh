@@ -8,6 +8,16 @@
 # - sudo apt-get install nano
 #
 # ----------------------------------------------------------------------
+
+# Install VSCode Extensions
+if [[ -n "$DP_VSCODE_EXTENSIONS" ]]; then
+    sudo chown -R www:www $APP_ROOT/.vscode/extensions/
+    IFS=','
+    for value in $DP_VSCODE_EXTENSIONS; do
+        code-server --install-extension $value --user-data-dir=$APP_ROOT/.vscode
+    done
+fi
+
 if [[ ! $(which npm) ]]; then
     cd ~
     curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
