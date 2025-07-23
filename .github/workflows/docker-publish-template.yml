@@ -71,8 +71,8 @@ jobs:
         docker exec ${{ job.services.webserver.id }} bash -c "sudo chmod +x \$APP_ROOT/.devpanel/init.sh"
         docker exec ${{ job.services.webserver.id }} bash -c "\$APP_ROOT/.devpanel/init.sh"
         echo "DUMPS DATABASE + STATIC FILE"
-        docker exec ${{ job.services.webserver.id }} bash -c "sudo chmod +x \$APP_ROOT/.devpanel/quickstart/create_quickstart.sh"
-        docker exec ${{ job.services.webserver.id }} bash -c "\$APP_ROOT/.devpanel/quickstart/create_quickstart.sh"
+        docker exec ${{ job.services.webserver.id }} bash -c "sudo chmod +x \$APP_ROOT/.devpanel/create_quickstart.sh"
+        docker exec ${{ job.services.webserver.id }} bash -c "\$APP_ROOT/.devpanel/create_quickstart.sh"
 
     - name: Set env to testing environment
       run: |
